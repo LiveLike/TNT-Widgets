@@ -32,6 +32,7 @@ export const LiveLikeNumberPredictionComponent = React.memo(() => {
             }
             intiLiveLike();
 
+            if(typeof window !== 'undefined') {
             customElements.define(
                 "ll-tnt-image-quiz",
                 LLtntImageQuiz as any
@@ -47,15 +48,15 @@ export const LiveLikeNumberPredictionComponent = React.memo(() => {
                 "ll-tnt-image-number-prediction-follow-up",
                 LLtntImageNumberPredictionFollowUp as any
               );
+            }
         }
     }, []);
-    return (<div>
+    return (typeof window !== 'undefined' ? <div>
         
+            <ll-tnt-image-quiz widgetId="31cefbfe-94d1-436e-8a09-e63467afc031" />
             <ll-tnt-image-quiz widgetId="6f0e84ea-9bf9-428c-add4-53322fd2b5cf" />
-            <ll-tnt-image-quiz widgetId="82855261-2836-4716-9834-e4836fb9447a" />
-            <ll-tnt-image-quiz widgetId="35aeedca-b037-498f-b16e-a81e59348cc6" />
             <ll-tnt-image-number-prediction widgetId="7c89b231-735f-4e44-befe-a489476df0eb" />
-        </div>)
+        </div> : null)
     // return <ll-tnt-image-number-prediction widgetId="7c89b231-735f-4e44-befe-a489476df0eb"></ll-tnt-image-number-prediction>
     // return (
     //     <ll-tnt-image-quiz widgetid="82855261-2836-4716-9834-e4836fb9447a" />
