@@ -1,0 +1,327 @@
+ll-tnt-image-quiz {
+  border-radius: 4px;
+  border: 1px solid #e7e9ea;
+  background-color: #fff !important;
+  color: #000;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  font-family: "TNTDigital";
+}
+
+ll-tnt-image-quiz livelike-widget-root {
+  width: 100%;
+}
+
+ll-tnt-image-quiz livelike-widget-body {
+  background: var(--primary-background-timeline);
+  display: flex;
+  flex-direction: column;
+}
+
+ll-tnt-image-quiz livelike-select {
+  padding: 8px 16px 12px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  border: 0.5px solid var(--senary-background-timeline);
+  border-top: none;
+  border-bottom: none;
+}
+
+/* ll-tnt-image-quiz livelike-image img {
+  height: 48px;
+  width: 48px;
+} */
+
+ll-tnt-image-quiz livelike-footer {
+  padding: 0 16px 16px;
+  overflow: hidden;
+  background: transparent;
+}
+
+ll-tnt-image-quiz livelike-footer .vote-button {
+  width: max-content;
+  text-align: center;
+  color: var(--brand-text);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 1px;
+  border: 0;
+  background: #cc20cc;
+  padding: 0.5rem 1.25rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-family: 'TNTDigital';
+}
+
+ll-tnt-image-quiz livelike-footer .vote-button:disabled,
+ll-tnt-image-quiz livelike-footer .vote-button.widget-expired {
+  opacity: 0.5;
+  cursor: not-allowed;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+livelike-image-quiz {
+  border-radius: 4px;
+  border: 1px solid #e7e9ea;
+  background-color: #fff !important;
+  color: #000;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  font-family: "TNTDigital";
+}
+
+livelike-image-quiz livelike-widget-root {
+  width: 100%;
+}
+
+livelike-image-quiz livelike-widget-body {
+  background: var(--primary-background-timeline);
+  display: flex;
+  flex-direction: column;
+}
+
+livelike-image-quiz livelike-select {
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 6px;
+  border: 0.5px solid var(--senary-background-timeline);
+  border-top: none;
+  border-bottom: none;
+}
+
+livelike-widget-header {
+  background: #fff;
+  color: #14232d;
+  font-weight: 500;
+  font-size: 14px;
+  flex-direction: column;
+}
+
+.quiz {
+  padding: 0 1rem 0;
+  color: #661066;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+livelike-image-quiz livelike-footer {
+  padding: 16px;
+  background: transparent;
+}
+
+livelike-image-quiz livelike-footer .results {
+  width: max-content;
+  text-align: center;
+  color: var(--brand-text);
+  font-size: 14px;
+  font-weight: 700;
+  border: 0;
+  background: #cc20cc;
+  padding: 0.5rem 1.25rem;
+  border-radius: 4px;
+  opacity: 0.5;
+  cursor: not-allowed;
+  font-style: normal;
+  line-height: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: 'TNTDigital';
+}
+
+livelike-option[selected]:not([disabled]),
+livelike-option[selected]:not([disabled]):hover {
+  background: #5b656c;
+}
+
+livelike-option {
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px transparent inset;
+  padding: 0 10px 0 16px;
+  overflow: hidden;
+  display: flex;
+  background: #e7e9ea;
+  align-items: center;
+  min-height: 60px;
+}
+
+livelike-option livelike-percentage {
+  color: #14232d;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px;
+  padding: 0;
+  max-width: max-content;
+}
+
+livelike-progress {
+  height: 3px;
+  height: 3px;
+  max-width: -webkit-fill-available;
+  margin-right: 8px;
+}
+
+livelike-option:hover:not([disabled]) {
+  background: #d0d3d5;
+}
+
+
+
+livelike-option
+  .info-container
+  livelike-description {
+  color: #14232d;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 0;
+  max-width: max-content;
+}
+
+livelike-option[selected]:not([disabled])
+  .info-container
+  livelike-description {
+  color: #fff;
+}
+
+livelike-option .livelike-voting-input-container {
+  column-gap: 10px;
+  height: 48px;
+  max-width: 48px;
+  padding: 6px 0px;
+}
+
+livelike-option
+  .livelike-voting-input-container
+  .livelike-voting-number-input {
+  color: #14232d;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border-radius: 2px;
+  background: #fff;
+  border: 1px solid transparent;
+  aspect-ratio: 1;
+  width: 100%;
+  caret-color: #14232d;
+}
+
+
+livelike-option
+  .livelike-voting-input-container
+  .livelike-voting-number-input.correct-answer {
+  background: var(--quaternary-background-timeline);
+  color: var(--black);
+  font-size: 13px;
+  font-weight: 700;
+
+  margin: 5px 0;
+}
+
+livelike-option
+  .livelike-voting-input-container
+  .livelike-voting-number-input.incorrect-number-input {
+  border: 1px solid var(--ternary-background-timeline);
+  margin-right: 0px;
+}
+
+livelike-option
+  .livelike-voting-input-container
+  .livelike-voting-number-input.correct-number-input {
+  border: 1px solid var(--quaternary-background-timeline);
+}
+
+livelike-option livelike-image img {
+  height: auto;
+  width: 30px;
+  object-fit: cover;
+}
+
+livelike-widget-root[disabled]
+  livelike-select[disabled]
+  livelike-option[incorrect] {
+  border: 1px solid #ba382d;
+  background: #e7e9ea;
+  opacity: 0.6;
+}
+
+livelike-widget-root[disabled]
+  livelike-select[disabled]
+  livelike-option[incorrect]
+  livelike-description {
+  color: #ba382d;
+}
+
+livelike-widget-root[disabled]
+  livelike-select[disabled]
+  livelike-option[incorrect]
+  .incorrect-number-input {
+  background: #ba382d;
+  color: #fff;
+}
+
+livelike-widget-root[disabled]
+  livelike-select[disabled]
+  livelike-option[correct] {
+  border: 1px solid #00847f;
+  background: #e7e9ea;
+}
+
+livelike-widget-root[disabled]
+  livelike-select[disabled]
+  livelike-option[correct]
+  livelike-description {
+  color: #00847f;
+}
+
+livelike-widget-root[disabled]
+  livelike-select[disabled]
+  livelike-option[correct]
+  .correct-number-input {
+  background: #00847f;
+  color: #fff;
+}
+
+.option-container {
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  padding: 5px;
+}
+
+.player-image {
+  width: 48px;
+  height: 48px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.info-container {
+  flex-grow: 1;
+}
+
+
+.percentage-bar {
+  height: 3px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
