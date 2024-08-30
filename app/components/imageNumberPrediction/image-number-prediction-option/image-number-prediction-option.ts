@@ -1,67 +1,58 @@
+import { LiveLikeOption, html } from '@livelike/engagementsdk';
+
 import "./image-number-prediction-option.css";
 
-import { LiveLikeOption } from "@livelike/engagementsdk";
-const html = (window as any).html;
-
-class LLtntImageNumberPredictionOption extends LiveLikeOption {
-  
+export class TNTImageNumberPredictionOption extends LiveLikeOption {
   createRenderRoot(): this {
     return this;
   }
 
-  // optionSelected = () => {
-  //   if (this.disabled) return;
-  //   this.parentElement
-  //     .querySelectorAll("ll-tnt-image-number-prediction-option")
-  //     .forEach((el: any) => {
-  //       el !== this && (el.selected = false);
-  //     });
-  //   this.selected = true;
-  // };
-
   connectedCallback() {
-    this.addEventListener("click", this.optionSelected);
+    this.addEventListener('click', (e: MouseEvent) => this.optionSelected(e));
     return super.connectedCallback();
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.removeEventListener("click", this.optionSelected);
+    this.removeEventListener('click', (e: MouseEvent) =>
+      this.optionSelected(e)
+    );
   }
 
   firstUpdated() {
     super.firstUpdated();
-    const inputElm: HTMLInputElement | null =
-    this.querySelector('input[type=number]');
-  if (inputElm) {
-    if (
-      this.option &&
-      inputElm.disabled &&
-      this.isFollowUp &&
-      !this.isExpired
-    ) {
-      this.correct = this.option.correct_number === this.option.number;
-      this.incorrect = this.option.correct_number !== this.option.number;
-    }
 
-    inputElm.addEventListener('change', (el: Event) => {
-      if (el.target && el.target instanceof HTMLInputElement) {
-        const selectedElement: HTMLOptionElement | undefined =
-          (el.target.parentElement?.parentElement as HTMLOptionElement) ||
-          undefined;
-        if (el.target.value && selectedElement) {
-          selectedElement.selected = true;
-        } else if (selectedElement) {
-          selectedElement.selected = false;
-        }
+    const inputElm: HTMLInputElement | null =
+      this.querySelector('input[type=number]');
+    if (inputElm) {
+      if (
+        this.option &&
+        inputElm.disabled &&
+        this.isFollowUp &&
+        !this.isExpired
+      ) {
+        this.correct = this.option.correct_number === this.option.number;
+        this.incorrect = this.option.correct_number !== this.option.number;
       }
-    });
-    inputElm.addEventListener('keydown', () => {
-      setTimeout(() => {
-        this.checkSubmitEnabled();
-      }, 10);
-    });
-  }
+
+      inputElm.addEventListener('change', (el: Event) => {
+        if (el.target && el.target instanceof HTMLInputElement) {
+          const selectedElement: HTMLOptionElement | undefined =
+            (el.target.parentElement?.parentElement as HTMLOptionElement) ||
+            undefined;
+          if (el.target.value && selectedElement) {
+            selectedElement.selected = true;
+          } else if (selectedElement) {
+            selectedElement.selected = false;
+          }
+        }
+      });
+      inputElm.addEventListener('keydown', () => {
+        setTimeout(() => {
+          this.checkSubmitEnabled();
+        }, 10);
+      });
+    }
   }
 
   checkSubmitEnabled() {
@@ -113,10 +104,9 @@ class LLtntImageNumberPredictionOption extends LiveLikeOption {
 
   render() {
     if (this.isFollowUp) {
-      const answered = this.option.number ?? "";
+      const answered = this.option.number ?? '';
       const correctAnswer = this.option.correct_number;
       const isAnsweredCorrectly = answered === correctAnswer;
-
 
       return html`
         <livelike-image height="48px" width="48px"></livelike-image>
@@ -124,12 +114,12 @@ class LLtntImageNumberPredictionOption extends LiveLikeOption {
           <livelike-description></livelike-description>
         </div>
         <div class="livelike-voting-input-container">
-       
           <input
-            class=${`livelike-voting-number-input ${isAnsweredCorrectly
-          ? "correct-number-input"
-          : "incorrect-number-input"
-        }`}
+            class=${`livelike-voting-number-input ${
+              isAnsweredCorrectly
+                ? 'correct-number-input'
+                : 'incorrect-number-input'
+            }`}
             type="number"
             placeholder="-"
             disabled
@@ -148,9 +138,9 @@ class LLtntImageNumberPredictionOption extends LiveLikeOption {
             class="livelike-voting-number-input user-number-input"
             type="number"
             placeholder="-"
-            value=${this.option.number ?? ""}
-            @input=${(e: any) => this.inputHandler(this.option, e)}
-            @keypress=${(e: any) => this.keypressHandler(e)}
+            value=${this.option.number ?? ''}
+            @input=${(e: Event) => this.inputHandler(this.option, e)}
+            @keypress=${(e: Event) => this.keypressHandler(e)}
             ?disabled=${this.isDisabled}
           />
         </div>
@@ -158,7 +148,3 @@ class LLtntImageNumberPredictionOption extends LiveLikeOption {
     }
   }
 }
-customElements.define(
-  "ll-tnt-image-number-prediction-option",
-  LLtntImageNumberPredictionOption as any
-);

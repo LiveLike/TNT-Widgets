@@ -1,19 +1,24 @@
-import "../image-number-prediction-option";
+/* eslint-disable @typescript-eslint/unbound-method */
+import {
+  ImageNumberPredictionOption,
+  LiveLikeNumberPrediction,
+  html,
+  PredictionEvent,
+} from '@livelike/engagementsdk';
+
 import "./image-number-prediction.css";
 
-import { LiveLikeNumberPrediction } from "@livelike/engagementsdk";
-const html = (window as any).html;
 export const predictionVotes = {};
 
-export class LLtntImageNumberPredictionOption extends LiveLikeNumberPrediction {
+export class TNTImageNumberPrediction extends LiveLikeNumberPrediction {
   connectedCallback() {
-    this.kind = "image-number-prediction"
+    this.kind = 'image-number-prediction';
     return super.connectedCallback().then(() => {
       const interactiveUntil: string = this.widgetPayload.interactive_until;
       this.isExpired = interactiveUntil
         ? Date.now() > new Date(interactiveUntil).getTime()
         : false;
-    }) 
+    });
   }
 
   firstUpdated() {
@@ -23,28 +28,26 @@ export class LLtntImageNumberPredictionOption extends LiveLikeNumberPrediction {
         this.disabled = true;
       }
     });
-    this.addEventListener("prediction", (e: any) => {
+    this.addEventListener('prediction', ((e: PredictionEvent) => {
       //@ts-ignore
       predictionVotes[e.detail.widget.id] = {
         option_id: e.detail.prediction.option_id,
         claim_token: e.detail.prediction.claim_token,
       };
-    });
+    }) as EventListener);
   }
 
-  lockInVote = (options: any) => {
+  lockInVote = (options: ImageNumberPredictionOption[]) => {
     if (!this.disabled && !this.voteButtonDisabled) {
       this.voteDisable = true;
       const data = {
         votes:
           options &&
           options instanceof Array &&
-          options.map((option) => {
-            return {
-              option_id: option.id,
-              number: option.number,
-            };
-          }),
+          options.map((option) => ({
+            option_id: option.id,
+            number: option.number,
+          })),
       };
       this.createVote(this.vote_url, data).then(() => {
         this.voteDisable = true;
@@ -54,20 +57,20 @@ export class LLtntImageNumberPredictionOption extends LiveLikeNumberPrediction {
     }
   };
   disableOptions = () => {
-    const optionsList = this.querySelectorAll(".livelike-voting-number-input");
-    optionsList.forEach((element: any) => {
-      element.setAttribute("disabled", true);
+    const optionsList = this.querySelectorAll('.livelike-voting-number-input');
+    optionsList.forEach((element: Element) => {
+      element.setAttribute('disabled', 'true');
     });
   };
 
   render() {
     const renderSubmitBtnText = () => {
       if (this.isExpired) {
-        if (this.interaction) return "Expired - Answer submitted";
-        else return "Expired";
+        if (this.interaction) return 'Expired - Answer submitted';
+        else return 'Expired';
       } else {
-        if (this.disabled) return "Submitted";
-        else return "Submit";
+        if (this.disabled) return 'Submitted';
+        else return 'Submit';
       }
     };
 
@@ -75,32 +78,33 @@ export class LLtntImageNumberPredictionOption extends LiveLikeNumberPrediction {
       <template kind="image-number-prediction">
         <livelike-widget-root class="custom-widget">
           <livelike-widget-header class="widget-header" slot="header">
-            <div class="quiz">prediction</div>
+            <div class="quiz">QUIZ</div>
             <livelike-title class="custom-title"></livelike-title>
           </livelike-widget-header>
           <livelike-widget-body>
             <livelike-select>
               <template>
-                <ll-tnt-image-number-prediction-option
+                <tnt-image-number-prediction-option
                   .isFollowUp=${false}
                   .isDisabled=${this.disabled ||
-      this.voteDisable ||
-      this.isExpired ||
-      this.interaction}
+                  this.voteDisable ||
+                  this.isExpired ||
+                  this.interaction}
                   .inputHandler=${this.inputHandler}
                   .keypressHandler=${this.keypressHandler}
                 >
-                </ll-tnt-image-number-prediction-option>
+                </tnt-image-number-prediction-option>
               </template>
             </livelike-select>
             <livelike-footer>
               <button
-                class=${`widget-button ${this.isExpired
-        ? "widget-expired"
-        : !this.voteButtonDisabled
-          ? "option-selected"
-          : ""
-      }`}
+                class=${`widget-button ${
+                  this.isExpired
+                    ? 'widget-expired'
+                    : !this.voteButtonDisabled
+                      ? 'option-selected'
+                      : ''
+                }`}
                 @click=${() => this.lockInVote(this.options)}
                 ?disabled=${this.disabled}
               >
@@ -113,8 +117,3 @@ export class LLtntImageNumberPredictionOption extends LiveLikeNumberPrediction {
     `;
   }
 }
-
-// customElements.define(
-//   "ll-tnt-image-number-prediction",
-//   LLtntImageNumberPredictionOption as any
-// );

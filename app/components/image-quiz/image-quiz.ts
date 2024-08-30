@@ -2,7 +2,7 @@ import "./image-quiz.css";
 
 import { LiveLikeQuiz, html } from "@livelike/engagementsdk";
 
-export class LLtntImageQuiz extends LiveLikeQuiz {
+export class TntImageQuiz extends LiveLikeQuiz {
   lockInVote: any;
   selectedOption: any;
   quizVoteSubmitted: boolean = false;

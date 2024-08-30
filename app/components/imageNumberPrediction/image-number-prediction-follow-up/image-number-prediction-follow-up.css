@@ -1,4 +1,4 @@
-ll-tnt-image-number-prediction-follow-up {
+tnt-image-number-prediction-follow-up {
   border-radius: 4px;
   border: 1px solid #e7e9ea;
   background-color: #fff !important;
@@ -9,17 +9,17 @@ ll-tnt-image-number-prediction-follow-up {
   font-family: "TNTDigital";
 }
 
-ll-tnt-image-number-prediction-follow-up livelike-widget-root {
+tnt-image-number-prediction-follow-up livelike-widget-root {
   width: 100%;
 }
 
-ll-tnt-image-number-prediction-follow-up livelike-widget-body {
+tnt-image-number-prediction-follow-up livelike-widget-body {
   background: var(--primary-background-timeline);
   display: flex;
   flex-direction: column;
 }
 
-ll-tnt-image-number-prediction-follow-up livelike-select {
+tnt-image-number-prediction-follow-up livelike-select {
   padding: 0 16px;
   display: flex;
   flex-direction: column;
@@ -47,12 +47,12 @@ livelike-widget-header.widget-header {
   text-transform: uppercase;
 }
 
-ll-tnt-image-number-prediction-follow-up livelike-footer {
+tnt-image-number-prediction-follow-up livelike-footer {
   padding: 16px;
   background: transparent;
 }
 
-ll-tnt-image-number-prediction-follow-up livelike-footer .results {
+tnt-image-number-prediction-follow-up livelike-footer .results {
   width: max-content;
   text-align: center;
   color: var(--brand-text);

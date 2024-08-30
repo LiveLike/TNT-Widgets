@@ -1,4 +1,4 @@
-ll-tnt-image-quiz {
+tnt-image-quiz {
   border-radius: 4px;
   border: 1px solid #e7e9ea;
   background-color: #fff !important;
@@ -9,17 +9,17 @@ ll-tnt-image-quiz {
   font-family: "TNTDigital";
 }
 
-ll-tnt-image-quiz livelike-widget-root {
+tnt-image-quiz livelike-widget-root {
   width: 100%;
 }
 
-ll-tnt-image-quiz livelike-widget-body {
+tnt-image-quiz livelike-widget-body {
   background: var(--primary-background-timeline);
   display: flex;
   flex-direction: column;
 }
 
-ll-tnt-image-quiz livelike-select {
+tnt-image-quiz livelike-select {
   padding: 8px 16px 12px;
   display: flex;
   flex-direction: column;
@@ -29,18 +29,18 @@ ll-tnt-image-quiz livelike-select {
   border-bottom: none;
 }
 
-/* ll-tnt-image-quiz livelike-image img {
+/* tnt-image-quiz livelike-image img {
   height: 48px;
   width: 48px;
 } */
 
-ll-tnt-image-quiz livelike-footer {
+tnt-image-quiz livelike-footer {
   padding: 0 16px 16px;
   overflow: hidden;
   background: transparent;
 }
 
-ll-tnt-image-quiz livelike-footer .vote-button {
+tnt-image-quiz livelike-footer .vote-button {
   width: max-content;
   text-align: center;
   color: var(--brand-text);
@@ -57,8 +57,8 @@ ll-tnt-image-quiz livelike-footer .vote-button {
   font-family: 'TNTDigital';
 }
 
-ll-tnt-image-quiz livelike-footer .vote-button:disabled,
-ll-tnt-image-quiz livelike-footer .vote-button.widget-expired {
+tnt-image-quiz livelike-footer .vote-button:disabled,
+tnt-image-quiz livelike-footer .vote-button.widget-expired {
   opacity: 0.5;
   cursor: not-allowed;
   font-size: 14px;
