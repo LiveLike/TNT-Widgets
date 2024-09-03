@@ -175,6 +175,13 @@ declare module '@livelike/engagementsdk' {
     localize: (key: string) => string;
   };
 
+  export type QuizOption = {
+    id: string;
+    description: string;
+    image_url: string;
+    vote_count: number;
+  }
+
   class LiveLikeQuiz extends LiveLike {
     connectedCallback(): Promise<void>;
     kind: string | undefined;
@@ -185,6 +192,12 @@ declare module '@livelike/engagementsdk' {
       interaction:string;
     owner: ElementOwner;
     localize: (key: string) => string;
+    lockInVote: () => void;
+    selectedOption: QuizOption;
+    quizVoteSubmitted: boolean;
+    voteDisable: boolean;
+    disabled: boolean;
+    votedLabel: string;
   }
 
   class LiveLikeNumberPrediction extends LiveLike {

@@ -3,12 +3,7 @@ import "./image-quiz.css";
 import { LiveLikeQuiz, html } from "@livelike/engagementsdk";
 
 export class TntImageQuiz extends LiveLikeQuiz {
-  lockInVote: any;
-  selectedOption: any;
-  quizVoteSubmitted: boolean = false;
-  voteDisable: any;
-  disabled: any;
-  votedLabel: any;
+  
 
   connectedCallback(): Promise<void> {
     this.kind = "image-quiz"
