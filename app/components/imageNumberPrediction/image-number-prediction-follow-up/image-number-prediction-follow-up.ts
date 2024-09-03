@@ -10,7 +10,7 @@ export class TNTImageNumberPredictionFollowUp extends LiveLikeNumberFollowUp {
   render() {
     const isUserCorrect =
       this.options?.filter(
-        (option: ImageNumberPredictionOption) =>
+        (option: any) =>
           option.number === option.correct_number
       ).length === 2
         ? true

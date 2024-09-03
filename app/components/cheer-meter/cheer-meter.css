@@ -1,0 +1,63 @@
+tnt-cheer-meter {
+  border-radius: 4px;
+  border: 1px solid #e7e9ea;
+  background-color: #fff !important;
+  color: #000;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem 1rem;
+  font-family: "TNTDigital";
+}
+
+tnt-cheer-meter livelike-widget-root {
+  width: 100%;
+}
+
+livelike-widget-header.widget-header {
+  background: #fff;
+  color: #000;
+  font-weight: 500;
+  font-size: 14px;
+  flex-direction: column;
+}
+
+tnt-cheer-meter livelike-widget-root livelike-widget-body {
+  background: transparent;
+  color: #000;
+  padding-top: 8px;
+}
+
+tnt-cheer-meter livelike-widget-root .custom-section {
+  color: #661066;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 12px;
+  padding-inline: 0.25rem;
+  text-transform: uppercase;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 1px;
+}
+
+tnt-cheer-meter livelike-widget-root .custom-title {
+  padding: 0.50rem 0.25rem;
+}
+
+tnt-cheer-meter livelike-widget-root livelike-widget-body livelike-option {
+  padding: 1rem 1.25rem;
+  border: 2px solid #fff;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+tnt-cheer-meter livelike-widget-root livelike-widget-body livelike-option cheer-option {
+  background: #fff;
+  border-radius: 6px;
+  max-width: max-content;
+}
+
+tnt-cheer-meter livelike-widget-root livelike-widget-body livelike-option cheer-option:hover {
+  background: #f7f7f7;
+}

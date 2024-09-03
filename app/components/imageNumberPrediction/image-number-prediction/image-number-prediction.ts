@@ -63,14 +63,22 @@ export class TNTImageNumberPrediction extends LiveLikeNumberPrediction {
     });
   };
 
+  checkExpiry = () => {
+    const interactiveUntil: string = this.widgetPayload.interactive_until;
+    this.isExpired = interactiveUntil
+      ? Date.now() > new Date(interactiveUntil).getTime()
+      : false;
+  }
+
   render() {
     const renderSubmitBtnText = () => {
+      this.checkExpiry()
       if (this.isExpired) {
-        if (this.interaction) return 'Expired - Answer submitted';
-        else return 'Expired';
+        if (this.interaction) return  this.owner.localize('widget.submitted.expired');
+        else return this.owner.localize('widget.expired');
       } else {
-        if (this.disabled) return 'Submitted';
-        else return 'Submit';
+        if (this.disabled) return this.owner.localize('widget.submitted');
+        else return this.owner.localize('widget.submit');
       }
     };
 

@@ -1,0 +1,118 @@
+tnt-emoji-slider {
+  border-radius: 4px;
+  border: 1px solid #e7e9ea;
+  background-color: #fff !important;
+  color: #000;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem 1rem;
+  font-family: "TNTDigital";
+}
+
+tnt-emoji-slider livelike-widget-root {
+  width: 100%;
+}
+
+tnt-emoji-slider livelike-widget-root .custom-title {
+  padding: 0.50rem 0.25rem;
+}
+
+tnt-emoji-slider livelike-widget-root livelike-widget-body {
+  background: #fff;
+  padding-top: 8px;
+}
+
+tnt-emoji-slider livelike-widget-root livelike-widget-body .input-form {
+  margin: 0;
+  width: 100%;
+}
+
+tnt-emoji-slider livelike-widget-root livelike-footer .vote-button {
+  width: max-content;
+  text-align: center;
+  color: var(--brand-text);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  border: 0;
+  background: #cc20cc;
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  padding: 0.5rem 1.25rem;
+  font-family: 'TNTDigital';
+  line-height: 16px;
+  letter-spacing: 1px;
+}
+
+tnt-emoji-slider livelike-footer .vote-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+tnt-emoji-slider livelike-widget-root .custom-section {
+  color: #661066;
+  font-style: normal;
+  font-weight: 700;
+  padding-inline: 0.25rem;
+  text-transform: uppercase;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 1px;
+}
+
+tnt-emoji-slider .slider-input {
+  margin: 0px 0px 12px;
+  border-radius: 100px;
+}
+
+tnt-emoji-slider .slider-input::-webkit-slider-runnable-track {
+  background: #D0D3D5;
+  height: 10px;
+  border-radius: 100px;
+  background-image: linear-gradient(90deg,
+      var(--brand-primary),
+      var(--brand-primary) var(--x),
+      transparent 0);
+}
+
+tnt-emoji-slider .slider-input::-moz-range-track {
+  background: #D0D3D5;
+  height: 10px;
+  border-radius: 100px;
+  background-image: linear-gradient(90deg,
+      var(--brand-primary),
+      var(--brand-primary) var(--x),
+      transparent 0);
+}
+
+tnt-emoji-slider .result-mark .result-average {
+  width: 40px;
+  position: absolute;
+  margin-top: -20px;
+  left: -8px;
+  font-size: 14px;
+  font-weight: 700;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: #000;
+  font-family: "TNTDigital";
+}
+
+tnt-emoji-slider .result-mark {
+  border: unset;
+  border-radius: unset;
+  background: #000;
+  height: 60px;
+  width: 2px;
+  top: 7%;
+  z-index: 0;
+}

@@ -9,13 +9,14 @@ export class TntImageQuiz extends LiveLikeQuiz {
   voteDisable: any;
   disabled: any;
   votedLabel: any;
+
   connectedCallback(): Promise<void> {
     this.kind = "image-quiz"
     return super.connectedCallback();
   }
 
   checkExpiry() {
-    const interactiveUntil: string | undefined= this.widgetPayload.interactive_until;
+    const interactiveUntil: string | undefined = this.widgetPayload.interactive_until;
     this.isExpired = interactiveUntil
       ? Date.now() > new Date(interactiveUntil).getTime()
       : false;
@@ -25,11 +26,11 @@ export class TntImageQuiz extends LiveLikeQuiz {
     const renderSubmitBtnText = () => {
       this.checkExpiry()
       if (this.isExpired) {
-        if (this.interaction) return "Expired - Answer submitted";
-        else return "Expired";
+        if (this.interaction) return  this.owner.localize('widget.submitted.expired');
+        else return this.owner.localize('widget.expired');
       } else {
-        if (this.disabled) return "Submitted";
-        else return "Submit";
+        if (this.disabled) return this.owner.localize('widget.submitted');
+        this.owner.localize('widget.submit');;
       }
     };
 

@@ -1,7 +1,10 @@
+
 declare module '@livelike/engagementsdk' {
   function html(strings: TemplateStringsArray, ...a: unknown[]): unknown;
+  function property(options: PropertyOptions): PropertyDecorator;
   const userProfile: {
     id: string;
+    access_token: string;
   };
   enum SdkEvent {
     INITIALISED = 'INITIALISED',
@@ -10,6 +13,14 @@ declare module '@livelike/engagementsdk' {
     clientId: string;
   };
   function init(initArgs: LiveLikeInitArgs): Promise<void>;
+
+  function applyLocalization(localization: { [languageCode: string]: { [key: string]: string, [value: string]: string } }): void;
+
+  type IWidgetResults = {
+    results: IWidgetPayload[];
+  };
+
+  function getWidgets(widgetArds: IWidgetArgs): Promise<IWidgetResults>;
 
   function addSdkEventListener(
     sdkEvent: SdkEvent,
@@ -88,6 +99,11 @@ declare module '@livelike/engagementsdk' {
 
   export type WidgetPayload = {
     interactive_until: string;
+    url: string;
+    average_magnitude: number;
+    options: ImageNumberPredictionOption[];
+    vote_url: string;
+    initial_magnitude: number;
   };
 
   export type ImageNumberPredictionOption = {
@@ -108,6 +124,57 @@ declare module '@livelike/engagementsdk' {
     };
   };
 
+  class LiveLikeCheerMeter extends LiveLike {
+    connectedCallback(): Promise<void>;
+    kind: string | undefined;
+    widgetPayload: WidgetPayload;
+    vote_url: string;
+    kind: string;
+    options: ImageNumberPredictionOption[];
+    updateComplete: Promise<void>;
+    createVote(voteUrl: string, data: unknown): Promise<void>;
+  }
+
+  export type SliderInteraction = {
+    magnitude: number;
+  };
+
+  class LiveLikeEmojiSlider extends LiveLike {
+    connectedCallback(): Promise<void>;
+    kind: string | undefined;
+    widgetPayload: WidgetPayload;
+    vote_url: string;
+    kind: string;
+    options: ImageNumberPredictionOption[];
+    updateComplete: Promise<void>;
+    createVote(voteUrl: string, data: unknown): Promise<void>;
+    isExpired: boolean;
+    url: string;
+    average_magnitude: number; 
+    voteDisable: boolean;
+    showUserVoteInstantly: boolean;
+    updateAverageMagnitude(magnitude: number): void;
+    sliderVoteSubmitted: boolean;
+    disabled: boolean;
+    interaction: SliderInteraction;
+    phase: string;
+    val: number;
+    userInteracted: boolean;
+    owner: ElementOwner;
+  }
+
+  class LiveLikeWidgetElement extends LiveLike {
+    connectedCallback(): Promise<void>;
+    items: any;
+    item: any;
+    updateBackground(): void;
+    updated(changedProps: Map<PropertyKey, unknown>): void;
+  }
+
+  export type ElementOwner = {
+    localize: (key: string) => string;
+  };
+
   class LiveLikeQuiz extends LiveLike {
     connectedCallback(): Promise<void>;
     kind: string | undefined;
@@ -115,7 +182,9 @@ declare module '@livelike/engagementsdk' {
       interactive_until?: string;
     };
     isExpired: boolean;
-    interaction:string;
+      interaction:string;
+    owner: ElementOwner;
+    localize: (key: string) => string;
   }
 
   class LiveLikeNumberPrediction extends LiveLike {
@@ -131,6 +200,7 @@ declare module '@livelike/engagementsdk' {
     options: ImageNumberPredictionOption[];
     updateComplete: Promise<void>;
     createVote(voteUrl: string, data: unknown): Promise<void>;
+    owner: ElementOwner;
   }
 
   class LiveLikeNumberFollowUp extends LiveLike {
