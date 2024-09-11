@@ -1,0 +1,30 @@
+<html>
+
+<head>
+    <style>
+        div#reaction_container {
+            width: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://unpkg.com/@livelike/engagementsdk/livelike.umd.js"></script>
+    <script src="./embedBarStyles.js"></script>
+    <script src="./TNTReactionPicker.js"></script>
+    <div style="margin-top: 100px;">
+
+    </div>
+    <div id="reaction_container">
+        <tnt-livelike-reaction reactionSpaceId="a2615ac1-a1de-46aa-b04c-81b994dcb9ac" targetId="yourTargetID1"></tnt-livelike-reaction>  
+    </div>
+
+    <script>
+        LiveLike.init({
+            clientId: 'mOBYul18quffrBDuq2IACKtVuLbUzXIPye5S3bq5',
+            logger: true,
+        })
+    </script>
+</body>
+
+</html>
