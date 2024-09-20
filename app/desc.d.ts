@@ -67,6 +67,20 @@ declare module '@livelike/engagementsdk' {
   };
 
   class LiveLike extends HTMLElement {
+    static _$$: any;
+    static userProfile: any;
+    static addSdkEventListener(INITIALISED: any, loadReactionDetails: () => void) {
+      throw new Error("Method not implemented.");
+    }
+    static SdkEvent: any;
+    static removeEventListener(INITIALISED: any, loadReactionDetails: () => void) {
+      throw new Error("Method not implemented.");
+    }
+    static getReactionSpaceDetail(arg0: { reactionSpaceId: any; }) {
+      throw new Error("Method not implemented.");
+    }
+    static reactionPackController: any;
+    static userReactionController: any;
     connectedCallback(): Promise<void>;
     disconnectedCallback(): void;
     firstUpdated(): void;
@@ -176,10 +190,34 @@ declare module '@livelike/engagementsdk' {
   };
 
   export type QuizOption = {
+    vote_url: string;
     id: string;
     description: string;
     image_url: string;
     vote_count: number;
+    answer_url: string
+  }
+
+  class LiveLikePoll extends LiveLike {
+    connectedCallback(): Promise<void>;
+    kind: string | undefined;
+    widgetPayload: {
+      interactive_until?: string;
+    };
+    isExpired: boolean;
+    interaction:string;
+    owner: ElementOwner;
+    selectedOption: QuizOption;
+    disabled: boolean;
+    syntheticIncrement: boolean;
+    interactionEvent(voteCount?: number)
+    quizVoteSubmitted: boolean;
+    voteDisable: boolean;
+    disabled: boolean;
+    votedLabel: string;
+    updateVoteCount: any;
+    createVote: any;
+    updateComplete: Promise<void>;
   }
 
   class LiveLikeQuiz extends LiveLike {

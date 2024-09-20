@@ -1,12 +1,11 @@
-import "./image-quiz.css";
+import "./text-poll.css";
 
-import { LiveLikeQuiz, html } from "@livelike/engagementsdk";
+import { LiveLikePoll, QuizOption, html } from "@livelike/engagementsdk";
 
-export class TntImageQuiz extends LiveLikeQuiz {
+export class TntTextPoll extends LiveLikePoll {
   
-
   connectedCallback(): Promise<void> {
-    this.kind = "image-quiz"
+    this.kind = "text-poll"
     return super.connectedCallback();
   }
 
@@ -15,6 +14,35 @@ export class TntImageQuiz extends LiveLikeQuiz {
     this.isExpired = interactiveUntil
       ? Date.now() > new Date(interactiveUntil).getTime()
       : false;
+  }
+
+  submitVote = (option: QuizOption) => {
+    if (!this.disabled && option.id !== this.selectedOption.id) {
+      this.selectedOption = option;
+      this.syntheticIncrement = true;
+      this.interactionEvent();
+    }
+  };
+  
+  lockInVote = (_option: any) => {
+    if (!this.voteDisable && this.selectedOption?.id) {
+      this.updateVoteCount(this.selectedOption);
+      this.voteDisable = true;
+      this.createVote(this.selectedOption.vote_url).then(() => {
+        this.quizVoteSubmitted = true;
+        this.disabled = true;
+      });
+    }
+  };
+  
+  firstUpdated(): void {
+    super.firstUpdated()
+    this.updateComplete.then(() => {
+      if (this.interaction) {
+        this.disabled = true;
+        this.voteDisable = true;
+      }
+    });
   }
 
   render() {
@@ -43,7 +71,6 @@ export class TntImageQuiz extends LiveLikeQuiz {
       <template>
         <livelike-option class="option-container">
           
-                  <livelike-image class="player-image"></livelike-image>
                   <div class="info-container">
                     <livelike-description class="player-name"></livelike-description>
                     <div class="percentage-bar">
