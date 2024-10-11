@@ -5,14 +5,8 @@ import '../../imageNumberPrediction/image-number-prediction';
 import '../../imageNumberPrediction/image-number-prediction-follow-up';
 import '../../cheer-meter';
 import '../../emojiSlider';
-
-enum WidgetKind {
-  CHEER_METER = "cheer-meter",
-  CHEER_OPTION = "cheer-option",
-  IMAGE_NUMBER_PREDICTION = "image-number-prediction",
-  IMAGE_NUMBER_PREDICTION_FOLLOW_UP = "image-number-prediction-follow-up",
-  EMOJI_SLIDER = "emoji-slider",
-}
+import { IWidgetOptionItem, IWidgetPayload, WidgetKind } from '@livelike/javascript';
+import {LiveLikeWidgets} from '@livelike/engagementsdk'
 
 interface TNTMatchCenterTimelineProps {
   programId: string;
@@ -34,27 +28,32 @@ const TNTMatchCenterTimeline: React.FC<TNTMatchCenterTimelineProps> = React.memo
   const [widgetCount, setWidgetCount] = useState(0);
   const widgetsRef = useRef<HTMLElement | null>(null);
 
-  const updateWidgetToFollowUpWidget = useCallback(({ widgets }: any) => {
+  const updateWidgetToFollowUpWidget = useCallback((payload: {
+    widgets: IWidgetPayload[];
+  }) => {
     const followUpWidgetsList = [WidgetKind.IMAGE_NUMBER_PREDICTION_FOLLOW_UP];
     const allowedWidgetKinds = Object.values(WidgetKind);
 
+    const widgets = payload.widgets
     setWidgetCount(widgets.length);
     handleWidgetCountChanged(widgets.length);
 
-    const followUpWidgets = widgets.filter((widget: any) => followUpWidgetsList.includes(widget.kind));
-    const nonFollowUpWidgets = widgets.filter((widget: any) => !followUpWidgetsList.includes(widget.kind));
+    const followUpWidgets = widgets.filter((widget: IWidgetPayload) => followUpWidgetsList.includes(widget.kind));
+    const nonFollowUpWidgets = widgets.filter((widget: IWidgetPayload) => !followUpWidgetsList.includes(widget.kind));
     
     const updatedWidgets = nonFollowUpWidgets.map(
-      (nfWidget: any) => followUpWidgets.find(
-        (fWidget: any) => fWidget.id === nfWidget.follow_ups?.[0].id
+      (nfWidget: IWidgetPayload) => followUpWidgets.find(
+        (fWidget: IWidgetPayload) => fWidget.id === nfWidget.follow_ups?.[0].id
       ) ?? nfWidget
     );
 
-    return updatedWidgets.filter((widget: any) => allowedWidgetKinds.includes(widget.kind));
+    return updatedWidgets.filter((widget: IWidgetPayload) => allowedWidgetKinds.includes(widget.kind));
   }, [handleWidgetCountChanged]);
 
-  const customWidgetRenderer = useCallback((args: any) => {
-    const widgetPayload = args.widgetPayload;
+  const customWidgetRenderer = useCallback((payload: {
+    widgetPayload: IWidgetPayload;
+  }) => {
+    const widgetPayload = payload.widgetPayload;
     switch (widgetPayload.kind) {
       case WidgetKind.CHEER_METER:
         return document.createElement("tnt-cheer-meter");
@@ -69,7 +68,7 @@ const TNTMatchCenterTimeline: React.FC<TNTMatchCenterTimelineProps> = React.memo
     }
   }, []);
 
-  const handleIncomingFollowUpWidget = useCallback((widgetPayload: any) => {
+  const handleIncomingFollowUpWidget = useCallback((widgetPayload: IWidgetPayload) => {
     const allowedWidgetKinds = Object.values(WidgetKind);
     const followUpWidgetsList = [WidgetKind.IMAGE_NUMBER_PREDICTION_FOLLOW_UP];
 
@@ -77,7 +76,7 @@ const TNTMatchCenterTimeline: React.FC<TNTMatchCenterTimelineProps> = React.memo
     if (!followUpWidgetsList.includes(widgetPayload.kind)) return widgetPayload;
 
     if (widgetPayload.kind === WidgetKind.IMAGE_NUMBER_PREDICTION_FOLLOW_UP) {
-      const predictionWidget: any = document.querySelector(
+      const predictionWidget = document.querySelector(
         `[widgetId="${widgetPayload.image_number_prediction_id}"]`
       );
 
@@ -108,7 +107,7 @@ const TNTMatchCenterTimeline: React.FC<TNTMatchCenterTimelineProps> = React.memo
 
           if (element.count) {
             element.count = updatedWidget.options.reduce(
-              (a: any, c: any) => a + c.vote_count,
+              (a: number, c: IWidgetOptionItem) => a + (c.vote_count ?? 0),
               0
             );
           }
@@ -137,7 +136,7 @@ const TNTMatchCenterTimeline: React.FC<TNTMatchCenterTimelineProps> = React.memo
 
     element.widgetPayload = { ...newPayload };
     const optionIndex = widget.options.findIndex(
-      (option: any) => option.id === optionSelected
+      (option: IWidgetOptionItem) => option.id === optionSelected
     );
     if (optionIndex !== -1) {
       widget.options[optionIndex].vote_count += 1;
@@ -150,9 +149,9 @@ const TNTMatchCenterTimeline: React.FC<TNTMatchCenterTimelineProps> = React.memo
   useEffect(() => {
     const widgets = widgetsRef.current;
     if (widgets) {
-      (widgets as any).onInitialWidgetsLoaded = updateWidgetToFollowUpWidget;
-      (widgets as any).customWidgetRenderer = customWidgetRenderer;
-      (widgets as any).onWidgetReceived = handleIncomingFollowUpWidget;
+      (widgets as LiveLikeWidgets).onInitialWidgetsLoaded = updateWidgetToFollowUpWidget;
+      (widgets as LiveLikeWidgets).customWidgetRenderer = customWidgetRenderer;
+      (widgets as LiveLikeWidgets).onWidgetReceived = handleIncomingFollowUpWidget;
 
       widgets.addEventListener('widgetattached', widgetAttachedCallback);
       widgets.addEventListener('interacted', widgetInteractedCallback);

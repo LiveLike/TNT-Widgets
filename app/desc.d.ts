@@ -101,6 +101,15 @@ declare module '@livelike/engagementsdk' {
 
   class LiveLikeEmbedReaction extends HTMLElement {}
 
+  class LiveLikeWidgets extends LiveLike {
+    onInitialWidgetsLoaded: (widgets: IWidgetPayload[]) => any;
+    customWidgetRenderer: (payload: {
+      widgetPayload: IWidgetPayload;
+    }) => HTMLElement | null;
+    onWidgetReceived: (widgetPayload: IWidgetPayload) => any;
+    static getWidgets(): Promise<Widget[]>;
+  }
+
   class LiveLikeOption extends LiveLike {
     correct: boolean;
     incorrect: boolean;

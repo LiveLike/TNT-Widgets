@@ -100,12 +100,12 @@ export const LiveLikeNumberPredictionComponent = React.memo(() => {
         }
     }, []);
     return <div style={{flex:1}}>
-        {/* <TNTMatchCenter
+        <TNTMatchCenter
             matchId="GNEJSPPBE6Q84V0"
             widgetTypes="match-score-number-predictor,team-cheer-meter,team-emoji-slider"
-        ></TNTMatchCenter> */}
+        ></TNTMatchCenter>
 
-        <tnt-text-poll widgetId="61452049-dbde-4646-9900-48ae3d0219ee" />
+        {/* <tnt-text-poll widgetId="61452049-dbde-4646-9900-48ae3d0219ee" /> */}
         {/* <tnt-image-quiz widgetId="31cefbfe-94d1-436e-8a09-e63467afc031" /> */}
         {/* <tnt-image-quiz widgetId="6f0e84ea-9bf9-428c-add4-53322fd2b5cf" />
         <tnt-image-number-prediction widgetId="7c89b231-735f-4e44-befe-a489476df0eb" /> */}
