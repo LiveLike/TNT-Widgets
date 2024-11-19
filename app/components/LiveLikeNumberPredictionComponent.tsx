@@ -14,6 +14,7 @@ import { TNTCheerMeter } from "./cheer-meter";
 import "../index.css";
 import "../../assets/fonts/font.css";
 import  LiveLike, { applyLocalization }  from "@livelike/engagementsdk";
+import { TntTextAsk } from "./text-ask";
 
 declare global {
     namespace JSX {
@@ -25,6 +26,9 @@ declare global {
                 widgetId: string;
             };
             'tnt-text-poll': React.DetailedHTMLProps<React.HTMLAttributes<TntTextPoll>, TntTextPoll> & {
+                widgetId: string;
+            };
+            'tnt-text-ask': React.DetailedHTMLProps<React.HTMLAttributes<TntTextAsk>, TntTextAsk> & {
                 widgetId: string;
             };
         }
@@ -95,16 +99,21 @@ export const LiveLikeNumberPredictionComponent = React.memo(() => {
                     "tnt-text-poll",
                     TntTextPoll as any
                 );
+                customElements.define(
+                    "tnt-text-ask",
+                    TntTextAsk as any
+                );
             }
             effectInvokedRef.current = true;
         }
     }, []);
     return <div style={{flex:1}}>
-        <TNTMatchCenter
+        {/* <TNTMatchCenter
             matchId="GNEJSPPBE6Q84V0"
             widgetTypes="match-score-number-predictor,team-cheer-meter,team-emoji-slider"
-        ></TNTMatchCenter>
+        ></TNTMatchCenter> */}
 
+        <tnt-text-ask widgetId="d3ed0027-32bf-46d4-a275-d726f39027b6" />
         {/* <tnt-text-poll widgetId="61452049-dbde-4646-9900-48ae3d0219ee" /> */}
         {/* <tnt-image-quiz widgetId="31cefbfe-94d1-436e-8a09-e63467afc031" /> */}
         {/* <tnt-image-quiz widgetId="6f0e84ea-9bf9-428c-add4-53322fd2b5cf" />

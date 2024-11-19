@@ -158,6 +158,26 @@ declare module '@livelike/engagementsdk' {
     createVote(voteUrl: string, data: unknown): Promise<void>;
   }
 
+  class LiveLikeTextAsk extends LiveLike {
+    connectedCallback(): Promise<void>;
+    kind: string | undefined;
+    widgetPayload: WidgetPayload;
+    vote_url: string;
+    kind: string;
+    updateComplete: Promise<void>;
+    isExpired: boolean;
+    disabled: boolean;
+    interaction: any;
+    owner: ElementOwner;
+    maxlength: number;
+    prompt: string;
+    text: string;
+    submitReply: unknown;
+    replyDisable: boolean;
+    showConfirmation: boolean;
+    confirmation_message: string;
+  }
+
   export type SliderInteraction = {
     magnitude: number;
   };
@@ -236,7 +256,7 @@ declare module '@livelike/engagementsdk' {
       interactive_until?: string;
     };
     isExpired: boolean;
-      interaction:string;
+    interaction:string;
     owner: ElementOwner;
     localize: (key: string) => string;
     lockInVote: () => void;
