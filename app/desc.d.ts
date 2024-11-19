@@ -215,6 +215,7 @@ declare module '@livelike/engagementsdk' {
   }
 
   export type ElementOwner = {
+    renderWidgetFooter: any;
     localize: (key: string) => string;
   };
 

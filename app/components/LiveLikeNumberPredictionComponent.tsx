@@ -113,7 +113,7 @@ export const LiveLikeNumberPredictionComponent = React.memo(() => {
             widgetTypes="match-score-number-predictor,team-cheer-meter,team-emoji-slider"
         ></TNTMatchCenter> */}
 
-        <tnt-text-ask widgetId="d3ed0027-32bf-46d4-a275-d726f39027b6" />
+        <tnt-text-ask widgetId="489c5bd5-81dd-4164-b47d-281f77222272" />
         {/* <tnt-text-poll widgetId="61452049-dbde-4646-9900-48ae3d0219ee" /> */}
         {/* <tnt-image-quiz widgetId="31cefbfe-94d1-436e-8a09-e63467afc031" /> */}
         {/* <tnt-image-quiz widgetId="6f0e84ea-9bf9-428c-add4-53322fd2b5cf" />

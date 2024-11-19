@@ -123,3 +123,27 @@ textarea {
   color: #5B656C !important;
 }
 
+.sponsor {
+  color: #14232D;
+  font-family: TNTDigital !important; 
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0.5px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+.confirmation-message {
+  color: #14232D !important;
+  font-family: TNTDigital !important;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0.5px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+

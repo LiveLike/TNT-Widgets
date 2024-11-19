@@ -78,6 +78,7 @@ export class TntTextAsk extends LiveLikeTextAsk {
                   >
                 </div>
               </div>
+              ${this.owner.renderWidgetFooter()}
             </livelike-widget-body>
           </livelike-widget-root>
         </template>
