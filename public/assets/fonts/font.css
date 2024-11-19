@@ -1,0 +1,22 @@
+@font-face {
+  font-family: "TNTDigital";
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/TNTDigital-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "TNTDigital";
+  font-weight: 500;
+  font-display: swap;
+  src: url("/assets/fonts/TNTDigital-Medium.woff") format("woff");
+}
+
+@font-face {
+  font-family: "TNTDigital";
+  font-weight: 700;
+  font-display: swap;
+  src: url("/assets/fonts/TNTDigital-Bold.woff") format("woff");
+}
+
+

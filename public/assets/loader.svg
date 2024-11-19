@@ -1,0 +1,9 @@
+<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path id="Ellipse 7" d="M28 14C28 21.732 21.732 28 14 28C6.26801 28 0 21.732 0 14C0 6.26801 6.26801 0 14 0C21.732 0 28 6.26801 28 14ZM2.26113 14C2.26113 20.4832 7.5168 25.7389 14 25.7389C20.4832 25.7389 25.7389 20.4832 25.7389 14C25.7389 7.5168 20.4832 2.26113 14 2.26113C7.5168 2.26113 2.26113 7.5168 2.26113 14Z" fill="url(#paint0_angular_294_30761)"/>
+<defs>
+<radialGradient id="paint0_angular_294_30761" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(14 14) rotate(90) scale(14)">
+<stop stop-color="white"/>
+<stop offset="1" stop-opacity="0"/>
+</radialGradient>
+</defs>
+</svg>
