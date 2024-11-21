@@ -18,6 +18,7 @@ export class TntTextPoll extends LiveLikePoll {
 
   submitVote = (option: QuizOption) => {
     if (!this.disabled && option.id !== this.selectedOption.id) {
+      this.updateVoteCount(option);
       this.selectedOption = option;
       this.syntheticIncrement = true;
       this.interactionEvent();
@@ -26,7 +27,6 @@ export class TntTextPoll extends LiveLikePoll {
   
   lockInVote = (_option: any) => {
     if (!this.voteDisable && this.selectedOption?.id) {
-      this.updateVoteCount(this.selectedOption);
       this.voteDisable = true;
       this.createVote(this.selectedOption.vote_url).then(() => {
         this.quizVoteSubmitted = true;
