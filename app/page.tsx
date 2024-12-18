@@ -1,9 +1,9 @@
 "use client"
 import dynamic from 'next/dynamic';
-import('./components/LiveLikeNumberPredictionComponent')
+import('./components/LiveLikeTextAskWithSlider')
 
 const LiveLikeNumberPredictionComponent = dynamic(
-  () => import('./components/LiveLikeNumberPredictionComponent').then(mod => mod.LiveLikeNumberPredictionComponent),
+  () => import('./components/LiveLikeTextAskWithSlider').then(mod => mod.LiveLikeNumberPredictionComponent),
   { ssr: false, loading: () => <p>Loading...</p> }
 );
 

@@ -1,8 +1,11 @@
 import "./text-ask.css";
 
-import { LiveLikeTextAsk, html } from "@livelike/engagementsdk";
+import { LiveLikeTextAsk, html, property } from "@livelike/engagementsdk";
 
 export class TntTextAsk extends LiveLikeTextAsk {
+
+  @property({type: String||undefined})
+  mode = undefined;
 
   connectedCallback(): Promise<void> {
     this.kind = "text-ask"
@@ -14,6 +17,12 @@ export class TntTextAsk extends LiveLikeTextAsk {
     this.isExpired = interactiveUntil
       ? Date.now() > new Date(interactiveUntil).getTime()
       : false;
+  }
+
+  expiryTimeoutFn() {
+    const expiredTime = new Date(this.widgetPayload.interactive_until);
+    const timeout = expiredTime.getTime() - Date.now();
+    return timeout;
   }
 
   render() {
@@ -34,10 +43,9 @@ export class TntTextAsk extends LiveLikeTextAsk {
     return html`
         <template>
           <livelike-widget-root>
+          <livelike-timer></livelike-timer>
             <livelike-widget-header>
               <livelike-title></livelike-title>
-              <livelike-timer></livelike-timer>
-              <livelike-dismiss-button></livelike-dismiss-button>
             </livelike-widget-header>
             <livelike-widget-body>
               <div class="text-ask-prompt-container">

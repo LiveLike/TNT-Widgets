@@ -86,6 +86,14 @@ livelike-title {
   padding-top: 8px !important;
 }
 
+livelike-timer {
+  background: #cc20cc !important;
+  color: var(--brand-text) !important;
+  top: 0 !important;
+  height: 4px !important;
+  bottom: unset !important;
+}
+
 livelike-widget-header {
   background: #fff;
   color: #14232d;

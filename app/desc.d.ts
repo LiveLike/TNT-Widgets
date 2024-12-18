@@ -35,6 +35,8 @@ declare module '@livelike/engagementsdk' {
     ready: boolean;
   };
 
+  export const registerWidgetMode: (name: string, mode: WidgetMode) => void;
+
   export type ReactionSpace = {
     id: string;
   };
@@ -233,9 +235,11 @@ declare module '@livelike/engagementsdk' {
     kind: string | undefined;
     widgetPayload: {
       interactive_until?: string;
+      timeout?: string;
     };
     isExpired: boolean;
     interaction:string;
+    hideVoteInResults: boolean;
     owner: ElementOwner;
     selectedOption: QuizOption;
     disabled: boolean;
@@ -248,6 +252,7 @@ declare module '@livelike/engagementsdk' {
     updateVoteCount: any;
     createVote: any;
     updateComplete: Promise<void>;
+    results: (args?: IWidgetTimeoutArgs)=> Promise<void>;
   }
 
   class LiveLikeQuiz extends LiveLike {
