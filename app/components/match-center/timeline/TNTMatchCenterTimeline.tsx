@@ -28,11 +28,11 @@ const TNTMatchCenterTimeline: React.FC<TNTMatchCenterTimelineProps> = React.memo
   const [widgetCount, setWidgetCount] = useState(0);
   const widgetsRef = useRef<HTMLElement | null>(null);
 
-  const updateWidgetToFollowUpWidget = useCallback((payload: IWidgetPayload[]) => {
+  const updateWidgetToFollowUpWidget = useCallback(({widgets}: {widgets: IWidgetPayload[]}) => {
     const followUpWidgetsList = [WidgetKind.IMAGE_NUMBER_PREDICTION_FOLLOW_UP];
     const allowedWidgetKinds = Object.values(WidgetKind);
 
-    const widgets = payload
+    // const widgets = payload
     setWidgetCount(widgets.length);
     handleWidgetCountChanged(widgets.length);
 

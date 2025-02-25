@@ -51,6 +51,37 @@ tnt-image-number-prediction-option .livelike-voting-input-container {
   padding: 6px 0px;
 }
 
+tnt-image-number-prediction-option .followup-container {
+  column-gap: 10px;
+  height: 48px;
+  max-width: 100px;
+  padding: 6px 0px;
+  align-items: center;
+}
+
+livelike-widget-root[disabled]
+  livelike-select[disabled]
+  ll-tnt-image-number-prediction-option[incorrect]
+  .incorrect-number-user-input {
+  background: #290C0A;
+  color: #fff;
+  border-color: #BA382D;
+  max-width: 34px;
+  max-height: 24px;
+}
+
+livelike-widget-root[disabled]
+  livelike-select[disabled]
+  ll-tnt-image-number-prediction-option[correct]
+  .correct-number-user-input {
+  background: #00211F;
+  color: #fff;
+  border-color: #00847F;
+  max-width: 34px;
+  max-height: 24px;
+}
+
+
 tnt-image-number-prediction-option
   .livelike-voting-input-container
   .livelike-voting-number-input {

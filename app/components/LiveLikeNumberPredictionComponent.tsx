@@ -28,9 +28,6 @@ declare global {
             'tnt-text-poll': React.DetailedHTMLProps<React.HTMLAttributes<TntTextPoll>, TntTextPoll> & {
                 widgetId: string;
             };
-            'tnt-text-ask': React.DetailedHTMLProps<React.HTMLAttributes<TntTextAsk>, TntTextAsk> & {
-                widgetId: string;
-            };
         }
     }
 }
@@ -41,7 +38,7 @@ export const LiveLikeNumberPredictionComponent = React.memo(() => {
         if (!effectInvokedRef.current) {
             
             const intiLiveLike = async () => {
-                await LiveLike.init({ clientId: 'TDPcjbTEZrpZioRSZPaRy4jRw0Kck01t6i4bJFjk' });
+                await LiveLike.init({ clientId: 'NHSsguscIF6g4OlAdI5dEdtm8zIGFHFG0Pv0EdQz' });
             }
 
             if (typeof window !== 'undefined') {
@@ -108,12 +105,12 @@ export const LiveLikeNumberPredictionComponent = React.memo(() => {
         }
     }, []);
     return <div style={{flex:1}}>
-        {/* <TNTMatchCenter
+        <TNTMatchCenter
             matchId="GNEJSPPBE6Q84V0"
-            widgetTypes="match-score-number-predictor,team-cheer-meter,team-emoji-slider"
-        ></TNTMatchCenter> */}
+            widgetTypes="match-score-number-predictor,team-cheer-meter,team-emoji-slider,match-score-number-predictor-result"
+        ></TNTMatchCenter>
 
-        <tnt-text-ask widgetId="489c5bd5-81dd-4164-b47d-281f77222272" />
+        {/* <tnt-text-ask widgetId="489c5bd5-81dd-4164-b47d-281f77222272" /> */}
         {/* <tnt-text-poll widgetId="61452049-dbde-4646-9900-48ae3d0219ee" /> */}
         {/* <tnt-image-quiz widgetId="31cefbfe-94d1-436e-8a09-e63467afc031" /> */}
         {/* <tnt-image-quiz widgetId="6f0e84ea-9bf9-428c-add4-53322fd2b5cf" />

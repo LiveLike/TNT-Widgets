@@ -113,17 +113,28 @@ export class TNTImageNumberPredictionOption extends LiveLikeOption {
         <div class="livelike-voting-image-container">
           <livelike-description></livelike-description>
         </div>
-        <div class="livelike-voting-input-container">
-          <input
-            class=${`livelike-voting-number-input ${
-              isAnsweredCorrectly
-                ? 'correct-number-input'
-                : 'incorrect-number-input'
-            }`}
+       <div class="livelike-voting-input-container followup-container">
+       
+           <input
+            class=${`livelike-voting-number-input ${isAnsweredCorrectly
+          ? "correct-number-user-input"
+          : "incorrect-number-user-input"
+        }`}
             type="number"
             placeholder="-"
             disabled
             value=${answered}
+          />
+
+          <input
+            class=${`livelike-voting-number-input ${isAnsweredCorrectly
+          ? "correct-number-input"
+          : "incorrect-number-input"
+        }`}
+            type="number"
+            placeholder="-"
+            disabled
+            value=${correctAnswer}
           />
         </div>
       `;
